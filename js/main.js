@@ -29,6 +29,7 @@ var getRandomName = function() {
 }
 
 
+var ESCAPE = 27;
 
 var avatarArr = ["Вася", "Женя", "Петя", "Илья", "Максим", "Александр", "Софья", "Аня", "Иван"];
 
@@ -89,7 +90,7 @@ document.querySelector(".pictures").appendChild(fragment);
 // Отображение big-picture
 // Задание module3-task3
 
-document.querySelector(".big-picture").classList.remove("hidden"); // убираем у big-picture класс hidden
+//document.querySelector(".big-picture").classList.remove("hidden"); // убираем у big-picture класс hidden
 document.querySelector(".big-picture__img img").setAttribute("src", picturesDescription[0].url);
 document.querySelector(".likes-count").textContent = picturesDescription[0].likes;
 document.querySelector(".comments-count").textContent = picturesDescription[0].comments.length;
@@ -114,19 +115,11 @@ document.querySelector(".social__caption").textContent = picturesDescription[0].
 
 document.querySelector(".social__comment-count").classList.add("hidden");
 document.querySelector(".comments-loader").classList.add("hidden");
-document.querySelector("body").classList.add("modal-open");
+//document.querySelector("body").classList.add("modal-open");
 
-/*
-var socialImg = document.querySelectorAll(".social__comment .social__picture");
-for (var i = 0; i < socialImg.length; i++) {
- socialImg[i].setAttribute("src", getRandomAvatar(1,6));
-}
-*/
-//document.querySelector(".social__comment-loadmore").classList.add("hidden");
-//document.querySelector(".social__comment-count").classList.add("hidden");
-// document.querySelector(".social__comment--text").textContent = picturesDescription[0].comments;
 
 //Работа с кнопками
+/*
 var bigPicture = document.querySelector(".big-picture");
 var openPictures = document.querySelector(".pictures");
 
@@ -163,29 +156,56 @@ var closePictures = bigPicture.querySelector(".big-picture__cancel");
  });
 
 });
-
+*/
 
 //Работа с попапом с фильтрами
+var form = document.getElementById("upload-select-image");
+var openFilter = document.querySelector(".img-upload__overlay");
+var closeFilter = document.querySelector(".img-upload__cancel");
 
-var uploadButton = document.querySelector(".img-upload__label");
-var filterOverlay = document.querySelector(".img-upload__overlay");
-var closeOverlay = document.querySelector(".img-upload__cancel");
+var onFilterEscPress = function (evt) {
+  if (evt.key === 27) {
+    evt.preventDefault();
+    closeFilterForm();
+  }
+};
 
-uploadButton.addEventListener("click", function (evt) {
- evt.preventDefault();
- filterOverlay.classList.remove("hidden");
- var closeOverlay = document.querySelector(".img-upload__cancel");
- closeOverlay.addEventListener("click", function (evt){
-  evt.preventDefault();
-  filterOverlay.classList.add("hidden");
- });
+var openFilterForm = function () {
+  openFilter.classList.remove("hidden");
+
+  document.addEventListener("keydown", onFilterEscPress);
+};
+
+var closeFilterForm = function () {
+  openFilter.classList.add("hidden");
+
+  document.removeEventListener("keydown", onFilterEscPress);
+};
+
+form.addEventListener("change", function() {
+  openFilterForm();
+});
+form.addEventListener("keydown", function(evt) {
+  if (evt.key === 13) {
+    openFilterForm();
+  }
+});
+
+closeFilter.addEventListener("click", function() {
+  closeFilterForm();
+});
+
+closeFilter.addEventListener("keydown", function(evt) {
+  if (evt.key === 13) {
+  closeFilterForm();
+  }
 });
 
 // Настройка фильтра
-var getForm = document.getElementById("upload-select-image");
+
 var imagePreview = document.querySelector(".img-upload__preview img");
 
-getForm.addEventListener("change", function(evt) {
+document.querySelector(".img-upload__effects").addEventListener("change", function(evt) {
  evt.preventDefault();
  var input = evt.target;
  if (input.name != "effect") {
@@ -193,11 +213,37 @@ getForm.addEventListener("change", function(evt) {
 }
  var className = "effects__preview--";
  className += input.value;
- imagePreview.classList.add(className);
+ imagePreview.className = className;
 });
 
-//var className = "effects__preview--chrome";
-//document.querySelector(".img-upload__preview img").classList.add(className);
+// Валидация хэштегов
+
+var hashTagsInput = document.querySelector(".text__hashtags");
+
+hashTagsInput.addEventListener("change", function(evt) {
+  evt.stopPropagation();
+  var re = /^#[a-zа-яA-Z-А-Я0-9]*$/;
+  var hashTagsText = hashTagsInput.value.toLowerCase();
+  var hashtags = hashTagsText.split(" ");
+
+  for (i=0; i < hashtags.length; i++) {
+  if (hashtags.length > 5) {
+    hashTagsInput.setCustomValidity("Можно ввести только 5 хэштегов");
+  } else if (hashtags[i] === "#") {
+    hashTagsInput.setCustomValidity("Хэштег не может состоять из одной #");
+  }  else if (hashtags[i].length > 20) {
+    hashTagsInput.setCustomValidity("Хэштег не должен быть длиннее 19 символов");
+  } else if (hashtags[i] === hashtags[i-1]) {
+    hashTagsInput.setCustomValidity("Хэштеги не могут повторяться");
+  } else if (!(re.test(hashtags[i]))) {
+    hashTagsInput.setCustomValidity("Хэштег начинается с решетки и включает спецсимволы");
+  }
+  else {
+    hashTagsInput.setCustomValidity('');
+  }
+}
+});
+
 
 
 /*
