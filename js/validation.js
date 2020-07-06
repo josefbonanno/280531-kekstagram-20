@@ -5,7 +5,7 @@ var hashTagsInput = document.querySelector(".text__hashtags");
 var textAreaComment = document.querySelector(".text__description");
 
 hashTagsInput.addEventListener("input", function(evt) {
-=======
+
 var hashTagsInput = document.querySelector(".text__hashtags");
 var textAreaComment = document.querySelector(".text__description");
 
@@ -48,4 +48,3 @@ textAreaComment.addEventListener("input", function(evt) {
  });
 
 })();
-
