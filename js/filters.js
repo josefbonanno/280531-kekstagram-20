@@ -2,7 +2,6 @@
 // Настройка фильтра
 //document.querySelector(".img-upload__overlay").classList.remove("hidden");
 
-
 // SCALE??????
 var scaleLine = document.querySelector(".effect-level__line");
 var scaleHandle = document.querySelector(".effect-level__pin"); // ползунок, который мы будем таскать
