@@ -1,7 +1,6 @@
 //module3-task2
 // Настройка фильтра
-document.querySelector(".img-upload__overlay").classList.remove("hidden");
-
+//document.querySelector(".img-upload__overlay").classList.remove("hidden");
 
 // SCALE??????
 var scaleLine = document.querySelector(".effect-level__line");
