@@ -1,15 +1,11 @@
 // Валидация хэштегов
 (function () {
+
 var form = document.getElementById("upload-select-image"); // сделать глобальным
 var hashTagsInput = document.querySelector(".text__hashtags");
 var textAreaComment = document.querySelector(".text__description");
 
 hashTagsInput.addEventListener("input", function(evt) {
-
-var hashTagsInput = document.querySelector(".text__hashtags");
-var textAreaComment = document.querySelector(".text__description");
-
-hashTagsInput.addEventListener("change", function(evt) {
   evt.stopPropagation();
   var re = /^#[a-zа-яA-Z-А-Я0-9]*$/;
   var hashTagsText = hashTagsInput.value.toLowerCase();
