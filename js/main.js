@@ -1,28 +1,26 @@
-'use strict'
+"use strict";
+(function () {
+  var pictureTemplate = document.getElementById("picture").content;
 
-// Создаем массив из 25 объектов
+  var renderPicture = function (picture) {
+    var pictureElement = pictureTemplate.cloneNode(true);
 
+    pictureElement.querySelector(".picture__img").setAttribute("src", picture.url);
+    pictureElement.querySelector(".picture__likes").textContent = picture.likes;
+    pictureElement.querySelector(".picture__comments").textContent = picture.comments.length;
 
-// Создаем 25 картинок
-
-var pictureTemplate = document.getElementById("picture").content;
-
-var renderPicture = function (picture) {
-  var pictureElement = pictureTemplate.cloneNode(true);
-
-  pictureElement.querySelector(".picture__img").setAttribute("src", picture.url);
-  pictureElement.querySelector(".picture__likes").textContent = picture.likes;
-  pictureElement.querySelector(".picture__comments").textContent = picture.comments.length;
-
-  return pictureElement;
-}
-window.load(function (pictures) {
-  var fragment = document.createDocumentFragment();
-
-  for (var i = 0; i < 25; i++) {
-   fragment.appendChild(renderPicture(pictures[i]));
+    return pictureElement;
   }
 
-  document.querySelector(".pictures").appendChild(fragment);
+  window.load(function (pictures) {
+    var fragment = document.createDocumentFragment();
 
-});
+    for (var i = 0; i < 25; i++) {
+     fragment.appendChild(renderPicture(pictures[i]));
+    }
+
+    document.querySelector(".pictures").appendChild(fragment);
+
+  });
+
+})();
