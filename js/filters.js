@@ -1,14 +1,14 @@
-"use sctrict";
+'use sctrict';
+
 (function () {
-  var scaleLine = document.querySelector(".effect-level__line");
-  var scaleHandle = document.querySelector(".effect-level__pin");
-  var scaleLevel = document.querySelector(".effect-level__depth");
-  var effectLevel = document.querySelector(".effect-level");
-  var lineWidth = scaleLine.offsetWidth;
+  var scaleLine = document.querySelector('.effect-level__line');
+  var scaleHandle = document.querySelector('.effect-level__pin');
+  var scaleLevel = document.querySelector('.effect-level__depth');
+  var effectLevel = document.querySelector('.effect-level');
 
-  effectLevel.classList.add("hidden");
+  effectLevel.classList.add('hidden');
 
-  scaleHandle.addEventListener("mousedown", function (evt) {
+  scaleHandle.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
     var lineWidth = scaleLine.offsetWidth;
 
@@ -31,25 +31,24 @@
       };
 
       if (scaleHandle.offsetLeft < 0) {
-        scaleHandle.style.left = 0 + "px";
-        scaleLevel.style.width = 0 + "px";
+        scaleHandle.style.left = 0 + 'px';
+        scaleLevel.style.width = 0 + 'px';
       } else if (scaleHandle.offsetLeft > lineWidth) {
-        scaleHandle.style.left = lineWidth + "px";
-        scaleLevel.style.width = lineWidth + "px";
+        scaleHandle.style.left = lineWidth + 'px';
+        scaleLevel.style.width = lineWidth + 'px';
       } else {
-        scaleHandle.style.left = (scaleHandle.offsetLeft - shift.x) + "px";
-        scaleLevel.style.width = (scaleHandle.offsetLeft - shift.x) + "px";
+        scaleHandle.style.left = (scaleHandle.offsetLeft - shift.x) + 'px';
+        scaleLevel.style.width = (scaleHandle.offsetLeft - shift.x) + 'px';
       }
-     };
-
+    };
 
     var onMouseUp = function (upEvt) {
       upEvt.preventDefault();
-     document.removeEventListener("mousemove", onMouseMove);
-     document.removeEventListener("mouseup", onMouseUp);
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
     };
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
   })
 
   var imageFilter = function () {
@@ -87,44 +86,44 @@
         return percent;
     }
 
-    if (imagePreview.className === "effects__preview--chrome") {
-      imagePreview.style.filter = "grayscale(" + 1 * percentCount() + ")";
-    } else if (imagePreview.className === "effects__preview--sepia") {
-      imagePreview.style.filter = "sepia(" + 1 * percentCount() + ")";
-    } else if (imagePreview.className === "effects__preview--marvin") {
-      imagePreview.style.filter = "invert(" + 100 * percentCount() + "%" + ")";
-    } else if (imagePreview.className === "effects__preview--phobos") {
-      imagePreview.style.filter = "blur(" + 3 * percentCount() + "px" + ")";
-    } else if (imagePreview.className === "effects__preview--heat") {
-      imagePreview.style.filter = "brightness(" + 3 * percentCount() + ")";
+    if (imagePreview.className === 'effects__preview--chrome') {
+      imagePreview.style.filter = 'grayscale(' + 1 * percentCount() + ')';
+    } else if (imagePreview.className === 'effects__preview--sepia') {
+      imagePreview.style.filter = 'sepia(' + 1 * percentCount() + ')';
+    } else if (imagePreview.className === 'effects__preview--marvin') {
+      imagePreview.style.filter = 'invert(' + 100 * percentCount() + '%' + ')';
+    } else if (imagePreview.className === 'effects__preview--phobos') {
+      imagePreview.style.filter = 'blur(' + 3 * percentCount() + 'px' + ')';
+    } else if (imagePreview.className === 'effects__preview--heat') {
+      imagePreview.style.filter = 'brightness(' + 3 * percentCount() + ')';
     } else {
-      imagePreview.style.filter = "none";
+      imagePreview.style.filter = 'none';
     }
 
   }
 
-  scaleHandle.addEventListener("mousemove", imageFilter);
+  scaleHandle.addEventListener('mousemove', imageFilter);
 
 
-  var imagePreview = document.querySelector(".img-upload__preview img");
+  var imagePreview = document.querySelector('.img-upload__preview img');
 
-  document.querySelector(".img-upload__effects").addEventListener("change", function(evt) {
-    imagePreview.className = "";
-    imagePreview.style.filter = "";
+  document.querySelector('.img-upload__effects').addEventListener('change', function(evt) {
+    imagePreview.className = '';
+    imagePreview.style.filter = '';
     var input = evt.target;
-    if (input.name != "effect") {
+    if (input.name != 'effect') {
       return;
     }
-    if (input.value != "none") {
-      effectLevel.classList.remove("hidden");
+    if (input.value != 'none') {
+      effectLevel.classList.remove('hidden');
     } else {
-      effectLevel.classList.add("hidden");
+      effectLevel.classList.add('hidden');
     }
-    var className = "effects__preview--";
+    var className = 'effects__preview--';
     className += input.value;
     imagePreview.className = className;
-    scaleHandle.style.left = "100%";
-    scaleLevel.style.width = "100%";
+    scaleHandle.style.left = '100%';
+    scaleLevel.style.width = '100%';
   });
 
 })();
