@@ -1,4 +1,4 @@
-'use sctrict';
+'use strict';
 
 (function () {
   var scaleLine = document.querySelector('.effect-level__line');
@@ -111,10 +111,10 @@
     imagePreview.className = '';
     imagePreview.style.filter = '';
     var input = evt.target;
-    if (input.name != 'effect') {
+    if (input.name !== 'effect') {
       return;
     }
-    if (input.value != 'none') {
+    if (input.value !== 'none') {
       effectLevel.classList.remove('hidden');
     } else {
       effectLevel.classList.add('hidden');

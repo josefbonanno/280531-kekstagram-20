@@ -36,27 +36,27 @@
   };
 
   window.upload = function (data, onSuccess, onError) {
-   var xhr = new XMLHttpRequest();
-   xhr.responseType = 'json';
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'json';
 
-   xhr.addEventListener('load', function () {
-     if (xhr.status === StatusCode.OK) {
-       onSuccess(xhr.response);
-     } else {
-       onError('Статус ответа: ' + xhr.status + ' ' + xhr.statusText);
-     }
-   });
-   xhr.addEventListener('error', function () {
-     onError('Произошла ошибка соединения');
-   });
-   xhr.addEventListener('timeout', function () {
-     onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс');
-   });
+    xhr.addEventListener('load', function () {
+      if (xhr.status === StatusCode.OK) {
+        onSuccess(xhr.response);
+      } else {
+        onError('Статус ответа: ' + xhr.status + ' ' + xhr.statusText);
+      }
+    });
+    xhr.addEventListener('error', function () {
+      onError('Произошла ошибка соединения');
+    });
+    xhr.addEventListener('timeout', function () {
+      onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс');
+    });
 
-   xhr.timeout = TIMEOUT_IN_MS;
+    xhr.timeout = TIMEOUT_IN_MS;
 
-   xhr.open('POST', URLPOST);
-   xhr.send(data);
-  };
+    xhr.open('POST', URLPOST);
+    xhr.send(data);
+   };
 
 })();
