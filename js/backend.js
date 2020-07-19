@@ -57,6 +57,6 @@
 
     xhr.open('POST', URLPOST);
     xhr.send(data);
-   };
+  };
 
 })();

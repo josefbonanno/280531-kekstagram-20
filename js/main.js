@@ -16,7 +16,7 @@
     pictureElement.querySelector('.picture__comments').textContent = picture.comments.length;
 
     return pictureElement;
-  }
+  };
 
   window.renderGallery = function (response) {
     var previousPictures = document.querySelectorAll('a.picture');
@@ -56,7 +56,7 @@
         pictures = window.getDiscussed(pictures).reverse();
         window.renderGallery(pictures);
       }
-    }
-   });
+    };
+  });
 
 })();

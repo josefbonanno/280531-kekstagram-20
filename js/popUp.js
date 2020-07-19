@@ -2,14 +2,13 @@
 (function () {
 
   var bigPicture = document.querySelector('.big-picture');
-  var picturesContainer = document.querySelector('.pictures');
 
   var bigPictureClose = function () {
     bigPicture.classList.add('hidden');
     document.querySelector('.social__comment-count').classList.remove('hidden');
     document.querySelector('.comments-loader').classList.remove('hidden');
     document.querySelector('.comments-visual').textContent = 5;
-  }
+  };
 
     window.openPictures = function (pictureElement, picture) {
 
