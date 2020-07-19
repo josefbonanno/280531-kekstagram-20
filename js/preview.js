@@ -68,15 +68,15 @@
 
   closeFilter.addEventListener('keydown', function (evt) {
     if (evt.keyCode === 13) {
-     closeFilterForm();
+      closeFilterForm();
     }
   });
 
   form.addEventListener('submit', function (evt) {
-    window.upload(new FormData(form), function (response) {
-     closeFilterForm();
-     uploadSuccess();
-  }, function () {
+    window.upload(new FormData(form), function () {
+      closeFilterForm();
+      uploadSuccess();
+    }, function () {
       closeFilterForm();
       uploadUnSuccess();
     });

@@ -10,9 +10,9 @@
     document.querySelector('.comments-visual').textContent = 5;
   };
 
-    window.openPictures = function (pictureElement, picture) {
+  window.openPictures = function (pictureElement, picture) {
 
-    pictureElement.addEventListener('click', function () {
+  pictureElement.addEventListener('click', function () {
       document.querySelector('.big-picture__img img').src = picture.url;
       document.querySelector('.likes-count').textContent = picture.likes;
       document.querySelector('.social__caption').textContent = picture.description;
@@ -38,36 +38,34 @@
           socialComment.classList.add('hidden');
         }
 
-      document.querySelector('.social__comments').appendChild(socialComment);
-     }
+        document.querySelector('.social__comments').appendChild(socialComment);
+      }
 
-     if (picture.comments.length <= 4) {
-       document.querySelector('.social__comment-count').classList.add('hidden');
-       document.querySelector('.comments-loader').classList.add('hidden');
-     } else {
-       document.querySelector('.comments-count').textContent = picture.comments.length;
-     }
+       if (picture.comments.length <= 4) {
+         document.querySelector('.social__comment-count').classList.add('hidden');
+         document.querySelector('.comments-loader').classList.add('hidden');
+       } else {
+         document.querySelector('.comments-count').textContent = picture.comments.length;
+       }
 
-     var commentsLoader = document.querySelector('.comments-loader');
-     var commentsCount = document.querySelector('.picture__comments').textContent;
+      var commentsLoader = document.querySelector('.comments-loader');
+      var showHiddenComments = function () {
+        var COMM = parseFloat(document.querySelector('.comments-visual').textContent);
+        var hiddenCommentCount = document.querySelectorAll('.social__comment.hidden').length;
 
-     var showHiddenComments = function () {
-       var COMM = parseFloat(document.querySelector('.comments-visual').textContent);
-       var hiddenCommentCount = document.querySelectorAll('.social__comment.hidden').length;
-
-         if (hiddenCommentCount > 5) {
-           for (var m = 0; m < 5; m++) {
-             document.querySelectorAll('.social__comment.hidden')[0].classList.remove('hidden');
-           }
-           document.querySelector('.comments-visual').textContent = COMM + 5;
-         } else {
-           for (var n = 0; n < hiddenCommentCount; n++) {
-             document.querySelectorAll('.social__comment.hidden')[0].classList.remove('hidden');
-           }
+        if (hiddenCommentCount > 5) {
+          for (var m = 0; m < 5; m++) {
+            document.querySelectorAll('.social__comment.hidden')[0].classList.remove('hidden');
+          }
+          document.querySelector('.comments-visual').textContent = COMM + 5;
+          } else {
+            for (var n = 0; n < hiddenCommentCount; n++) {
+              document.querySelectorAll('.social__comment.hidden')[0].classList.remove('hidden');
+            }
            document.querySelector('.comments-loader').classList.add('hidden');
            document.querySelector('.social__comment-count').classList.add('hidden');
          }
-     }
+    }
 
     commentsLoader.addEventListener('click', showHiddenComments);
 
