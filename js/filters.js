@@ -76,8 +76,8 @@
       } else {
         percent = 1;
       }
-        return percent;
-      };
+      return percent;
+    };
 
     if (imagePreview.className === 'effects__preview--chrome') {
       imagePreview.style.filter = 'grayscale(' + 1 * percentCount() + ')';
