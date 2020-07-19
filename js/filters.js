@@ -49,42 +49,41 @@
     };
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
-  })
+  });
 
   var imageFilter = function () {
 
     var percentCount = function () {
       var percent = scaleHandle.offsetLeft;
-        if (scaleHandle.offsetLeft < scaleLine.offsetWidth * 0.1) {
-           percent = 0.1;
-         } else if (scaleHandle.offsetLeft < scaleLine.offsetWidth * 0.2) {
-           percent = 0.2;
-         }
-           else if (scaleHandle.offsetLeft < scaleLine.offsetWidth * 0.3) {
-           percent = 0.3;
-         } else if (scaleHandle.offsetLeft < scaleLine.offsetWidth * 0.4) {
-           percent = 0.4;
-         }
-           else if (scaleHandle.offsetLeft < scaleLine.offsetWidth * 0.5) {
-           percent = 0.5;
-         }
-           else if (scaleHandle.offsetLeft < scaleLine.offsetWidth * 0.6) {
-           percent = 0.6;
-         }
-           else if (scaleHandle.offsetLeft < scaleLine.offsetWidth * 0.7) {
-           percent = 0.7;
-         }
-           else if (scaleHandle.offsetLeft < scaleLine.offsetWidth * 0.8) {
-           percent = 0.8;
-         }
-           else if (scaleHandle.offsetLeft < scaleLine.offsetWidth * 0.9) {
-           percent = 0.9;
-         }
-           else {
-           percent = 1;
-         }
-         return percent;
-     }
+      if (scaleHandle.offsetLeft < scaleLine.offsetWidth * 0.1) {
+        percent = 0.1;
+      } else if (scaleHandle.offsetLeft < scaleLine.offsetWidth * 0.2) {
+        percent = 0.2;
+      }
+        else if (scaleHandle.offsetLeft < scaleLine.offsetWidth * 0.3) {
+        percent = 0.3;
+      } else if (scaleHandle.offsetLeft < scaleLine.offsetWidth * 0.4) {
+        percent = 0.4;
+      }
+        else if (scaleHandle.offsetLeft < scaleLine.offsetWidth * 0.5) {
+        percent = 0.5;
+      }
+        else if (scaleHandle.offsetLeft < scaleLine.offsetWidth * 0.6) {
+        percent = 0.6;
+      }
+        else if (scaleHandle.offsetLeft < scaleLine.offsetWidth * 0.7) {
+        percent = 0.7;
+      }
+        else if (scaleHandle.offsetLeft < scaleLine.offsetWidth * 0.8) {
+        percent = 0.8;
+      }
+        else if (scaleHandle.offsetLeft < scaleLine.offsetWidth * 0.9) {
+        percent = 0.9;
+      } else {
+        percent = 1;
+      }
+        return percent;
+      };
 
     if (imagePreview.className === 'effects__preview--chrome') {
       imagePreview.style.filter = 'grayscale(' + 1 * percentCount() + ')';
@@ -100,13 +99,13 @@
       imagePreview.style.filter = 'none';
     }
 
-  }
+  };
 
   scaleHandle.addEventListener('mousemove', imageFilter);
 
   var imagePreview = document.querySelector('.img-upload__preview img');
 
-  document.querySelector('.img-upload__effects').addEventListener('change', function(evt) {
+  document.querySelector('.img-upload__effects').addEventListener('change', function (evt) {
     imagePreview.className = '';
     imagePreview.style.filter = '';
     var input = evt.target;
