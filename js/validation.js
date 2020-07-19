@@ -4,6 +4,9 @@
   var form = document.getElementById('upload-select-image');
   var hashTagsInput = document.querySelector('.text__hashtags');
   var textAreaComment = document.querySelector('.text__description');
+  var errorColorChange = function () {
+    hashTagsInput.style.outlineColor = 'red';
+  }
 
   hashTagsInput.addEventListener('input', function(evt) {
     evt.stopPropagation();
@@ -11,35 +14,44 @@
     var hashTagsText = hashTagsInput.value.toLowerCase();
     var hashtags = hashTagsText.split(' ');
 
-    for (i=0; i < hashtags.length; i++) {
+    for (var i = 0 ; i < hashtags.length; i++) {
       if (hashtags.length > 5) {
         hashTagsInput.setCustomValidity('Можно ввести только 5 хэштегов');
+        errorColorChange();
         form.reportValidity();
       } else if (hashtags[i] === '#') {
         hashTagsInput.setCustomValidity('Хэштег не может состоять из одной #');
+        errorColorChange();
         form.reportValidity();
       }  else if (hashtags[i].length > 20) {
-        hashTagsInput.setCustomValidity('Хэштег не должен быть длиннее 19 символов');
+        hashTagsInput.setCustomValidity('Хэштег не должен быть длиннее 20 символов');
+        errorColorChange();
         form.reportValidity();
-      } else if (hashtags[i] === hashtags[i-1]) {
+      } else if (hashtags[i] === hashtags[Math.floor(Math.random() * hashtags.length)] && hashtags.length > 1) {
         hashTagsInput.setCustomValidity('Хэштеги не могут повторяться');
+        errorColorChange();
         form.reportValidity();
       } else if (!(re.test(hashtags[i]))) {
-        hashTagsInput.setCustomValidity('Хэштег начинается с решетки и включает спецсимволы');
+        hashTagsInput.setCustomValidity('Хэштег начинается с решетки, не включает спецсимволы и разделяются пробелами');
+        errorColorChange();
         form.reportValidity();
       }
         else {
         hashTagsInput.setCustomValidity('');
+        hashTagsInput.style.outlineColor = '';
       }
     }
   });
 
   textAreaComment.addEventListener('input', function(evt) {
     evt.stopPropagation();
-    if (textAreaComment.length > 140) {
+    if (textAreaComment.value.length >= 140) {
       textAreaComment.setCustomValidity('Комментарий не должен быть длиннее 140 символов');
+      errorColorChange();
+      form.reportValidity();
     } else {
       textAreaComment.setCustomValidity('');
+      textAreaComment.style.outlineColor = '';
     }
   });
 

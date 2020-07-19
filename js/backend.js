@@ -2,8 +2,8 @@
 
 (function () {
 
-  var URLGet = 'https://javascript.pages.academy/kekstagram/data';
-  var URLPost = 'https://javascript.pages.academy/kekstagram';
+  var URLGET = 'https://javascript.pages.academy/kekstagram/data';
+  var URLPOST = 'https://javascript.pages.academy/kekstagram';
 
   var StatusCode = {
     OK: 200
@@ -14,7 +14,7 @@
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
 
-    xhr.open('GET', URLGet);
+    xhr.open('GET', URLGET);
 
     xhr.addEventListener('load', function () {
       if (xhr.status === StatusCode.OK) {
@@ -35,7 +35,7 @@
     xhr.send();
   };
 
-  window.upload = function (data, onSuccess) {
+  window.upload = function (data, onSuccess, onError) {
    var xhr = new XMLHttpRequest();
    xhr.responseType = 'json';
 
@@ -55,7 +55,7 @@
 
    xhr.timeout = TIMEOUT_IN_MS;
 
-   xhr.open('POST', URLPost);
+   xhr.open('POST', URLPOST);
    xhr.send(data);
   };
 
