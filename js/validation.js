@@ -13,7 +13,7 @@
     var re = /^#[a-zа-яA-Z-А-Я0-9]*$/;
     var hashTagsText = hashTagsInput.value.toLowerCase();
     var hashtags = hashTagsText.split(' ');
-    for (var i = 0 ; i < hashtags.length; i++) {
+    for (var i = 0; i < hashtags.length; i++) {
       if (hashtags.length > 5) {
         hashTagsInput.setCustomValidity('Можно ввести только 5 хэштегов');
         errorColorChange();
@@ -34,8 +34,7 @@
         hashTagsInput.setCustomValidity('Хэштег начинается с решетки, не включает спецсимволы и разделяются пробелами');
         errorColorChange();
         form.reportValidity();
-      }
-      else {
+      } else {
         hashTagsInput.setCustomValidity('');
         hashTagsInput.style.outlineColor = '';
       }
