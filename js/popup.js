@@ -62,10 +62,10 @@
           for (var k = 0; k < hiddenCommentCount; k++) {
             document.querySelectorAll('.social__comment.hidden')[0].classList.remove('hidden');
           }
-           document.querySelector('.comments-loader').classList.add('hidden');
-           document.querySelector('.social__comment-count').classList.add('hidden');
-         }
-      }
+          document.querySelector('.comments-loader').classList.add('hidden');
+          document.querySelector('.social__comment-count').classList.add('hidden');
+        }
+      };
 
       commentsLoader.addEventListener('click', showHiddenComments);
 
