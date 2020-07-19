@@ -9,7 +9,7 @@
   }
 
   hashTagsInput.addEventListener('input', function(evt) {
-    evt.stopPropagation();
+    evt.preventDefault();
     var re = /^#[a-zа-яA-Z-А-Я0-9]*$/;
     var hashTagsText = hashTagsInput.value.toLowerCase();
     var hashtags = hashTagsText.split(' ');
@@ -47,11 +47,23 @@
     evt.stopPropagation();
     if (textAreaComment.value.length >= 140) {
       textAreaComment.setCustomValidity('Комментарий не должен быть длиннее 140 символов');
-      errorColorChange();
+      textAreaComment.style.outlineColor = 'red';
       form.reportValidity();
     } else {
       textAreaComment.setCustomValidity('');
       textAreaComment.style.outlineColor = '';
+    }
+  });
+
+  hashTagsInput.addEventListener('keydown', function(evt) {
+    if (evt.keyCode === 27) {
+      evt.stopPropagation();
+    }
+  });
+
+  textAreaComment.addEventListener('keydown', function(evt) {
+    if (evt.keyCode === 27) {
+      evt.stopPropagation();
     }
   });
 
