@@ -5,6 +5,7 @@
   var scaleControlSmaller = document.querySelector('.scale__control--smaller');
   var scaleControlBigger = document.querySelector('.scale__control--bigger');
   var imagePreview = document.querySelector('.img-upload__preview img');
+
   scaleControlSmaller.addEventListener('click', function () {
     if (scaleControlValue.value <= 100 && 25 < scaleControlValue.value) {
       scaleControlValue.value -= 25;
