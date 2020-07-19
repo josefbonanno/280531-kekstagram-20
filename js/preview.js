@@ -26,7 +26,7 @@
     });
   };
 
-  var onFilterEscPress = function(evt) {
+  var onFilterEscPress = function (evt) {
     if (evt.keyCode === 27) {
       evt.preventDefault();
       closeFilterForm();
