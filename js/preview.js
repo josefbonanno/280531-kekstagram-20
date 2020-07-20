@@ -10,6 +10,12 @@
   var errorTemplate = document.getElementById('error').content;
   var errorMessage = errorTemplate.cloneNode(true);
 
+  var onFilterEscPress = function (evt) {
+    if (evt.keyCode === 27) {
+      evt.preventDefault();
+      closeFilterForm();
+    }
+  };
 
   var uploadSuccess = function () {
     document.querySelector('main').appendChild(successMessage);
@@ -17,6 +23,11 @@
     closeSuccessMessage.addEventListener('click', function () {
       document.querySelector('.success').classList.add('hidden');
     });
+    document.addEventListener('keydown', function (evt) {
+      if (evt.keyCode === 27) {
+        document.querySelector('.success').classList.add('hidden');
+      }
+    })
   };
   var uploadUnSuccess = function () {
     document.querySelector('main').appendChild(errorMessage);
@@ -24,13 +35,11 @@
     closeErrorMessage.addEventListener('click', function () {
       document.querySelector('.error').classList.add('hidden');
     });
-  };
-
-  var onFilterEscPress = function (evt) {
-    if (evt.keyCode === 27) {
-      evt.preventDefault();
-      closeFilterForm();
-    }
+    document.addEventListener('keydown', function (evt) {
+      if (evt.keyCode === 27) {
+        document.querySelector('.error').classList.add('hidden');
+      }
+    })
   };
 
   var openFilterForm = function () {

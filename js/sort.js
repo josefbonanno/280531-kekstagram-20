@@ -23,7 +23,7 @@
     return response;
   };
 
-  imgFilters.addEventListener('click', function (evt) {
+  imgFilters.addEventListener('click', window.debounce(function (evt) {
     if (evt.target.matches('button')) {
       for (var i = 0; i < imgFiltersButtons.length; i++) {
         imgFiltersButtons[i].classList.remove('img-filters__button--active');
@@ -39,6 +39,6 @@
     if (evt.target === filterDiscussed) {
       window.filteredGallery.onDiscussed();
     }
-  });
+  }));
 
 })();
