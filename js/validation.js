@@ -1,7 +1,6 @@
 'use strict';
 (function () {
 
-  var form = document.getElementById('upload-select-image');
   var hashTagsInput = document.querySelector('.text__hashtags');
   var textAreaComment = document.querySelector('.text__description');
   var errorColorChange = function () {

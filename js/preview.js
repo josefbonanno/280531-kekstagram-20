@@ -1,10 +1,10 @@
 'use strict';
 (function () {
 
-  var form = document.getElementById('upload-select-image');
+  window.form = document.getElementById('upload-select-image');
   var openFilter = document.querySelector('.img-upload__overlay');
   var closeFilter = document.querySelector('.img-upload__cancel');
-  var imagePreview = document.querySelector('.img-upload__preview img');
+  window.imagePreview = document.querySelector('.img-upload__preview img');
   var successTemplate = document.getElementById('success').content;
   var successMessage = successTemplate.cloneNode(true);
   var errorTemplate = document.getElementById('error').content;
