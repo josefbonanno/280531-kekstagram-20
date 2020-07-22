@@ -22,8 +22,8 @@
     for (var j = 0; j < previousPictures.length; j++) {
       picturesWrapper.removeChild(previousPictures[j]);
     }
-    for (var i = 0; i < amount; i++) {
-      fragment.appendChild(renderPicture(response[i]));
+    for (var k = 0; k < amount; k++) {
+      fragment.appendChild(renderPicture(response[k]));
     }
     document.querySelector('.pictures').appendChild(fragment);
 
@@ -89,32 +89,32 @@
             document.querySelector('.comments-visual').textContent = 5;
           };
           var closePictures = bigPicture.querySelector('.big-picture__cancel');
-          closePictures.addEventListener('click', function (evt) {
-            evt.preventDefault();
+          closePictures.addEventListener('click', function (close) {
+            close.preventDefault();
             bigPictureClose();
           });
-          document.addEventListener('keydown', function (evt) {
-            if (evt.keyCode === 27) {
-              evt.preventDefault();
+          document.addEventListener('keydown', function (closeESC) {
+            if (closeESC.keyCode === 27) {
+              closeESC.preventDefault();
               bigPictureClose();
             }
           });
-          bigPicture.addEventListener('Wkeydown', function (evt) {
-            if (evt.keyCode === 13) {
-              evt.preventDefault();
+          bigPicture.addEventListener('Wkeydown', function (closeENT) {
+            if (closeNET.keyCode === 13) {
+              closeENT.preventDefault();
               bigPictureClose();
             }
           });
-          inputBigPicture.addEventListener('keydown', function (evt) {
-            if (evt.keyCode === 27) {
-              evt.stopPropagation();
+          inputBigPicture.addEventListener('keydown', function (closeStop) {
+            if (closeStop.keyCode === 27) {
+              closeStop.stopPropagation();
             }
-          })
+          });
         });
       };
-       openPictures(pictureElements[i], pictures[i]);
-     }
-   };
+      openPictures(pictureElements[i], pictures[i]);
+    }
+  };
 
   window.load(function (response) {
     pictures = response;
