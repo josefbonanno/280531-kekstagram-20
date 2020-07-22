@@ -105,6 +105,9 @@
              bigPictureClose();
            }
          });
+         document.querySelector('.overlay__hidden').addEventListener('click', function (evt) {
+           bigPictureClose();
+         })
          inputBigPicture.addEventListener('keydown', function (evt) {
            if (evt.keyCode === 27) {
              evt.stopPropagation();
@@ -120,7 +123,7 @@
     pictures = response;
     window.renderGallery(pictures);
 
-    window.filteredGallery = {
+    window.galleryFiltered = {
       onDefault: function () {
         pictures = [];
         amount = 25;
