@@ -31,13 +31,13 @@
       evt.target.classList.add('img-filters__button--active');
     }
     if (evt.target === filterDefault) {
-      window.galleryFiltered.onDefault();
+      window.filteredGallery.onDefault();
     }
     if (evt.target === filterRandom) {
-      window.galleryFiltered.onRandom();
+      window.filteredGallery.onRandom();
     }
     if (evt.target === filterDiscussed) {
-      window.galleryFiltered.onDiscussed();
+      window.filteredGallery.onDiscussed();
     }
   }));
 

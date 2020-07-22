@@ -27,7 +27,7 @@
       if (evt.keyCode === 27) {
         document.querySelector('.success').classList.add('hidden');
       }
-    })
+    });
   };
   var uploadUnSuccess = function () {
     document.querySelector('main').appendChild(errorMessage);
@@ -39,7 +39,7 @@
       if (evt.keyCode === 27) {
         document.querySelector('.error').classList.add('hidden');
       }
-    })
+    });
   };
 
   var openFilterForm = function () {
@@ -49,9 +49,9 @@
   };
 
   var closeFilterForm = function () {
-    imagePreview.className = '';
-    imagePreview.style.filter = '';
-    imagePreview.style.transform = '';
+    window.imagePreview.className = '';
+    window.imagePreview.style.filter = '';
+    window.imagePreview.style.transform = '';
     document.querySelector('.scale__control--value').value = 100;
     document.querySelector('.effect-level').classList.add('hidden');
     document.querySelector('.text__hashtags').value = '';
@@ -61,11 +61,11 @@
     document.querySelector('body').classList.remove('.modal-open');
   };
 
-  form.addEventListener('change', function () {
+  window.form.addEventListener('change', function () {
     openFilterForm();
   });
 
-  form.addEventListener('keydown', function (evt) {
+  window.form.addEventListener('keydown', function (evt) {
     if (evt.keyCode === 13) {
       openFilterForm();
     }
@@ -81,8 +81,8 @@
     }
   });
 
-  form.addEventListener('submit', function (evt) {
-    window.upload(new FormData(form), function () {
+  window.form.addEventListener('submit', function (evt) {
+    window.upload(new FormData(window.form), function () {
       closeFilterForm();
       uploadSuccess();
     }, function () {
