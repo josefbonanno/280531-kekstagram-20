@@ -22,7 +22,7 @@
     for (var j = 0; j < previousPictures.length; j++) {
       picturesWrapper.removeChild(previousPictures[j]);
     }
-    for (var k = 0; k < amount; k++) {
+    for (var c = 0; c < amount; c++) {
       fragment.appendChild(renderPicture(response[k]));
     }
     document.querySelector('.pictures').appendChild(fragment);
@@ -100,7 +100,7 @@
             }
           });
           bigPicture.addEventListener('Wkeydown', function (closeENT) {
-            if (closeNET.keyCode === 13) {
+            if (closeENT.keyCode === 13) {
               closeENT.preventDefault();
               bigPictureClose();
             }
