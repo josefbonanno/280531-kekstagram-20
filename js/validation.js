@@ -16,19 +16,19 @@
       if (hashtags.length > 5) {
         hashTagsInput.setCustomValidity('Можно ввести только 5 хэштегов');
         errorColorChange();
-        form.reportValidity();
+        window.form.reportValidity();
       } else if (hashtags[i] === '#') {
         hashTagsInput.setCustomValidity('Хэштег не может состоять из одной #');
         errorColorChange();
-        form.reportValidity();
+        window.form.reportValidity();
       } else if (hashtags[i].length > 20) {
         hashTagsInput.setCustomValidity('Хэштег не должен быть длиннее 20 символов');
         errorColorChange();
-        form.reportValidity();
+        window.form.reportValidity();
       } else if (hashtags[i] === hashtags[Math.floor(Math.random() * hashtags.length)] && hashtags.length > 1) {
         hashTagsInput.setCustomValidity('Хэштеги не могут повторяться');
         errorColorChange();
-        form.reportValidity();
+        window.form.reportValidity();
       } else if (!(re.test(hashtags[i]))) {
         hashTagsInput.setCustomValidity('Хэштег начинается с решетки, не включает спецсимволы и разделяются пробелами');
         errorColorChange();
@@ -45,7 +45,7 @@
     if (textAreaComment.value.length >= 140) {
       textAreaComment.setCustomValidity('Комментарий не должен быть длиннее 140 символов');
       textAreaComment.style.outlineColor = 'red';
-      form.reportValidity();
+      window.form.reportValidity();
     } else {
       textAreaComment.setCustomValidity('');
       textAreaComment.style.outlineColor = '';
