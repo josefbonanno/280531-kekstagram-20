@@ -23,7 +23,7 @@
       picturesWrapper.removeChild(previousPictures[j]);
     }
     for (var c = 0; c < amount; c++) {
-      fragment.appendChild(renderPicture(response[k]));
+      fragment.appendChild(renderPicture(response[c]));
     }
     document.querySelector('.pictures').appendChild(fragment);
 

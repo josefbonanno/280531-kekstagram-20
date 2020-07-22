@@ -32,7 +32,7 @@
       } else if (!(re.test(hashtags[i]))) {
         hashTagsInput.setCustomValidity('Хэштег начинается с решетки, не включает спецсимволы и разделяются пробелами');
         errorColorChange();
-        form.reportValidity();
+        window.form.reportValidity();
       } else {
         hashTagsInput.setCustomValidity('');
         hashTagsInput.style.outlineColor = '';
