@@ -8,7 +8,7 @@
   };
 
   hashTagsInput.addEventListener('input', function (evt) {
-    evt.preventDefault();
+    evt.stopPropagation();
     var re = /^#[a-zа-яA-Z-А-Я0-9]*$/;
     var hashTagsText = hashTagsInput.value.toLowerCase();
     var hashtags = hashTagsText.split(' ');
@@ -29,7 +29,7 @@
         hashTagsInput.setCustomValidity('Хэштеги не могут повторяться');
         errorColorChange();
         window.form.reportValidity();
-      } else if (!(re.test(hashtags[i]))) {
+      } else if (!(re.test(hashtags[i])) && hashTagsText !== '') {
         hashTagsInput.setCustomValidity('Хэштег начинается с решетки, не включает спецсимволы и разделяются пробелами');
         errorColorChange();
         window.form.reportValidity();
